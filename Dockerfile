@@ -1,7 +1,7 @@
 FROM hypriot/rpi-python
 MAINTAINER <https://github.com/bis83>
 
-RUN pip install slackweb
+RUN /bin/bash -c pip install slackweb
 
 RUN git clone --depth 1 https://github.com/bis83/rpi-python-slackweb-test.git
 
