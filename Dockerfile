@@ -1,9 +1,13 @@
 FROM hypriot/rpi-python
 MAINTAINER <https://github.com/bis83>
 
-RUN /bin/bash -c pip install slackweb
+RUN pip install slackweb
 
-RUN git clone --depth 1 https://github.com/bis83/rpi-python-slackweb-test.git
+RUN apt-get update && apt-get install -y \
+    curl \
+    --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
 
-WORKDIR rpi-python-slackweb-test
+RUN curl https://raw.githubusercontent.com/bis83/rpi-python-slackweb-test/master/bot.py > bot.py
 CMD ["bash", "python", "bot.py"]
+
